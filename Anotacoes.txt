@@ -1,0 +1,14 @@
+EntityFramework.
+string? - significa q o campo pode receber um valor nulo.
+para criar uma dependencia N-N basta criar uma ICollection<nomeDaTabela>.
+
+Comandos do EntityFramework para rodar as migrations:
+Add-Migration "Name of Migration"
+Update-Database
+
+Shared/_Layout.cshtml - Layout principal da página como se fosse uma interface que 
+todas as páginas da aplicação utilizam.
+
+BootStrap.
+
+É possivel criar uma View atráves do Método dentro do Controller com o botão direito do mouse.
