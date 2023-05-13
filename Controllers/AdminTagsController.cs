@@ -1,18 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using udemyBloggie.Web.Data;
 using udemyBloggie.Web.Models.Domain;
 using udemyBloggie.Web.Models.ViewModels;
+using udemyBloggie.Web.Repositories;
 
 namespace udemyBloggie.Web.Controllers
 {
     public class AdminTagsController : Controller
     {
-        private readonly BloggieDbContext bloggieDbContext;
+        private readonly ITagRepository tagRepository;
 
-        public AdminTagsController(BloggieDbContext bloggieDbContext)
+        public AdminTagsController(ITagRepository tagRepository)
         {
-            this.bloggieDbContext = bloggieDbContext;
+            this.tagRepository = tagRepository;
         }
 
         [HttpGet]
@@ -23,7 +25,7 @@ namespace udemyBloggie.Web.Controllers
 
         [HttpPost]
         [ActionName("Add")]
-        public IActionResult Add(AddTagRequest addTagRequest)
+        public async Task<IActionResult> Add(AddTagRequest addTagRequest) //Ássincrona.
         {
             //var name = Request.Form["name"]; //Request para o input da view
             //var displayName = Request.Form["displayName"];
@@ -40,32 +42,26 @@ namespace udemyBloggie.Web.Controllers
                 DisplayName = addTagRequest.DisplayName
             };
 
-
-            bloggieDbContext.Tags.Add(tag);
-            bloggieDbContext.SaveChanges();
+            await tagRepository.AddAsync(tag);
 
             return RedirectToAction("List");
         }
 
         [HttpGet]
         [ActionName("List")]
-        public IActionResult List()
+        public async Task<IActionResult> List()
         {
             // use dbContext to read the tags.
-            var tags = bloggieDbContext.Tags.ToList();
+            var tags = await tagRepository.GetAllAsync();
 
 
             return View(tags);
         }
 
         [HttpGet]
-        public IActionResult Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            // 1st method
-            //var tag = bloggieDbContext.Tags.Find(id);
-            
-            // 2nd Method
-            var tag = bloggieDbContext.Tags.FirstOrDefault(x => x.Id == id);
+            var tag = await tagRepository.GetAsync(id);
 
             if (tag != null)
             {
@@ -83,7 +79,7 @@ namespace udemyBloggie.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(EditTagRequest editTagRequest)
+        public async Task<IActionResult> Edit(EditTagRequest editTagRequest)
         {
             // Boa prática de verificação.
             var tag = new Tag
@@ -93,18 +89,15 @@ namespace udemyBloggie.Web.Controllers
                 DisplayName = editTagRequest.DisplayName,
             };
 
-            var existingTag = bloggieDbContext.Tags.Find(tag.Id);
+            var updateTag = await tagRepository.UpdateAsync(tag);
 
-            if (existingTag != null)
+            if (updateTag != null) 
+            { 
+                // Show sucess
+            }
+            else
             {
-                existingTag.Name = tag.Name;
-                existingTag.DisplayName = tag.DisplayName;
-
-                // Save changes.
-                bloggieDbContext.SaveChanges();
-
-                // Show sucess notification.
-                return RedirectToAction("List");
+                //show error
             }
 
             // Show error notification.
@@ -113,16 +106,13 @@ namespace udemyBloggie.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(EditTagRequest editTagRequest)
+        public async Task<IActionResult> Delete(EditTagRequest editTagRequest)
         {
-            var tag = bloggieDbContext.Tags.Find(editTagRequest.Id);
+            var deleteTag =  await tagRepository.DeleteAsync(editTagRequest.Id);
 
-            if (tag != null)
+            if (deleteTag != null)
             {
-                bloggieDbContext.Tags.Remove(tag);
-                bloggieDbContext.SaveChanges();
-
-                // Show a succes notification
+                //Show sucess notification
                 return RedirectToAction("List");
             }
 
