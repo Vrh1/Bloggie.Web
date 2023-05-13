@@ -23,3 +23,5 @@ Delete de tags,
 Criação das view List Add e Edit,
 ViewModels como uma boa pratica.
 Sistema CRUD completo.
+
+Aula 04 - Asynchronous Programming and Repository Pattern.
