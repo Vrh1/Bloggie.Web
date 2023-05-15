@@ -28,3 +28,7 @@ Aula 04 - Asynchronous Programming and Repository Pattern.
 Programação Ássincrona para os metodos (obs: bem tranquilo de se fazer no c# asp.net com ajuda do Entity Framework),
 Criação de Repositories/ItagInterface.cs,
 Os controladores são dependentes do TagRepository.cs.
+
+Aula 05 - Criando novo Controller (Admin Blogs),
+Criando HTML Form para adicionar o blog.
+Implementando Model View e Controller para a criação de uma matéria do blog.
