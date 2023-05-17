@@ -25,6 +25,6 @@ namespace udemyBloggie.Web.Models.ViewModels
         public IEnumerable<SelectListItem> Tags { get; set; }
 
         // Collect Tag
-        public string SelectedTag { get; set; }
+        public string[] SelectedTags { get; set; } = Array.Empty<string>();
     }
 }
