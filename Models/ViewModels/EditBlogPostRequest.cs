@@ -1,9 +1,10 @@
-﻿namespace udemyBloggie.Web.Models.Domain
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace udemyBloggie.Web.Models.ViewModels
 {
-    public class BlogPost
+    public class EditBlogPostRequest
     {
         public Guid Id { get; set; }
-
         public string Heading { get; set; } //string? is a nullable string property | string? faz com que  a string possa ter valor nulo no campo.
 
         public string PageTitle { get; set; }
@@ -13,14 +14,17 @@
         public string ShortDescription { get; set; }
         public string FeaturedImageUrl { get; set; }
         public string UrlHandle { get; set; }
-        
+
         public DateTime PublishedDate { get; set; }
 
         public string Author { get; set; }
         public bool Visible { get; set; }
 
-        // Navigation property
-        public ICollection<Tag> Tags { get; set; }
 
+        // Display tags
+        public IEnumerable<SelectListItem> Tags { get; set; }
+
+        // Collect Tag
+        public string[] SelectedTags { get; set; } = Array.Empty<string>();
     }
 }

@@ -30,5 +30,6 @@ Criação de Repositories/ItagInterface.cs,
 Os controladores são dependentes do TagRepository.cs.
 
 Aula 05 - Criando novo Controller (Admin Blogs),
-Criando HTML Form para adicionar o blog.
-Implementando Model View e Controller para a criação de uma matéria do blog.
+Criando HTML Form para adicionar o blog,
+Implementando Model View e Controller para a criação de uma matéria do blog,
+BlogPost CRUD - DropDowns CheckBox, DatePickers etc.
