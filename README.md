@@ -33,3 +33,13 @@ Aula 05 - Criando novo Controller (Admin Blogs),
 Criando HTML Form para adicionar o blog,
 Implementando Model View e Controller para a criação de uma matéria do blog,
 BlogPost CRUD - DropDowns CheckBox, DatePickers etc.
+
+Aula 06 - Introdução ao WYSIWYG
+significado - "What You See Is What You Get - O que você vê é o formato final".
+Introdução do Froala agora é possivel criar uma página sem precisar utilizar HTML.
+Implementação do Froala na página "Add.cshtml" no id "content".
+obs: Froala versão Free.
+Implementado Froala na página "Edit.cshtml".
+Criar uma API para upload de imagens.
+Introdução ao Cloudinary.
+Instalação via Nugget do Cloudinary.
