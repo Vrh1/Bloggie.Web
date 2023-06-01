@@ -1,5 +1,6 @@
 # udemyBloggie.Web
-## ASP.NET MVC / Entity Framework / MySqlServer
+## ASP.NET MVC / Entity Framework / MySqlServer 
+### Froala / Cloudinary
 
 Aula 01 - Criação do projeto MVC,
 Criação do Models Domain.
@@ -43,3 +44,7 @@ Implementado Froala na página "Edit.cshtml".
 Criar uma API para upload de imagens.
 Introdução ao Cloudinary.
 Instalação via Nugget do Cloudinary.
+Views AdminBlogPosts:
+	Add.cshtml adicionado o upload da imagem via Cloudinary e com a possibilidade de visualisação.
+	Edit.cshtml adicionado Cloudinary.
+Adicionado um método para o Froala conseguir reproduzir imagens através do Cloudinary.
