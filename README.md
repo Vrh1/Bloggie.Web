@@ -48,3 +48,8 @@ Views AdminBlogPosts:
 	Add.cshtml adicionado o upload da imagem via Cloudinary e com a possibilidade de visualisação.
 	Edit.cshtml adicionado Cloudinary.
 Adicionado um método para o Froala conseguir reproduzir imagens através do Cloudinary.
+
+Aula 07 - Blogs e Tags para usuários.
+Toda a base para a montagem do blog completa.
+Mostra a capa titulo e tags na home.
+Ao clicar, o usuário é redirecionado para a postagem do bloggie.
